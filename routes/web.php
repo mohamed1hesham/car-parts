@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController; 
+use App\Http\Controllers\AuthController;
+use Illuminate\Routing\Controllers\Middleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,15 +16,15 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-
 Route::group(["prefix" => "admin"], function () {
     Route::get('/login', [AuthController::class, 'login_admin'])->name('login');
     Route::post('/login', [AuthController::class, 'auth_login_admin'])->name('post_login');
     Route::get('/logout', [AuthController::class, 'logout_admin'])->name('post_logout');
-    
-    Route::group(["prefix" => "dashboard"], function () {
-        Route::get('/', [DashboardController::class, 'dashboard']);
 
-        Route::get('list', [DashboardController::class, 'admin']);
+    Route::group(['middleware' => 'admin'], function () {
+        Route::group(["prefix" => "dashboard"], function () {
+            Route::get('/', [DashboardController::class, 'dashboard']);
+            Route::get('list', [DashboardController::class, 'admin']);
+        });
     });
 });
