@@ -183,6 +183,16 @@
                      </a>
 
                  </li>
+                 <li class="nav-item ">
+                     <a href="{{ url('admin/logout') }}"
+                         class="nav-link @if (Request::segment(3) == '') active @endif">
+                         <i class="nav-icon fas fa-tachometer-alt"></i>
+                         <p>
+                             logout
+                         </p>
+                     </a>
+
+                 </li>
              </ul>
          </nav>
          <!-- /.sidebar-menu -->
