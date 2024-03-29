@@ -17,22 +17,17 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!empty(Auth::check()))
-        {
-            if(Auth::user()->is_admin==1){
-                
-        return $next($request);
+        if (!empty(Auth::check())) {
+            if (Auth::user()->is_admin == 1) {
 
-            }else{
+                return $next($request);
+            } else {
                 Auth::logout();
-            return redirect()->route('login');
+                return redirect()->route('login');
             }
-        }
-        else
-        {
+        } else {
             Auth::logout();
             return redirect()->route('login');
-        
         }
     }
 }

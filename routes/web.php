@@ -23,7 +23,7 @@ Route::group(["prefix" => "admin"], function () {
 
 
     Route::group(["prefix" => "dashboard"], function () {
-        Route::get('/', [DashboardController::class, 'dashboard']);
-        Route::get('list', [DashboardController::class, 'admin']);
-    })->middleware('admin');
+        Route::get('/', [DashboardController::class, 'dashboard'])->middleware(['auth', 'admin']);
+        Route::get('list', [DashboardController::class, 'admin'])->middleware(['auth', 'admin']);
+    });
 });
