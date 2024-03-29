@@ -17,13 +17,13 @@ Route::group(["prefix" => "admin"], function () {
     Route::get('/login', function () {
         return view('admin.auth.login');
     })->name('login');
-    Route::get('/admin/list', function () {
-        return view('admin.admin.list');
-    });
 
     Route::group(["prefix" => "dashboard"], function () {
         Route::get('/', function () {
             return view('admin.pages.dashboard');
+        });
+        Route::get('list', function () {
+            return view('admin.admin.list');
         });
     });
 });
