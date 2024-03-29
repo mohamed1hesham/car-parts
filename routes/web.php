@@ -3,11 +3,8 @@
 use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-<<<<<<< HEAD
 use Illuminate\Routing\Controllers\Middleware;
 
-=======
->>>>>>> 69efc0acba4e89547472b1ce06a1d78761fb46d6
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,12 +20,6 @@ Route::group(["prefix" => "admin"], function () {
     Route::get('/login', [AuthController::class, 'login_admin'])->name('login');
     Route::post('/login', [AuthController::class, 'auth_login_admin'])->name('post_login');
     Route::get('/logout', [AuthController::class, 'logout_admin'])->name('post_logout');
-<<<<<<< HEAD
-=======
-
-    Route::group(["prefix" => "dashboard"], function () {
-        Route::get('/', [DashboardController::class, 'dashboard']);
->>>>>>> 69efc0acba4e89547472b1ce06a1d78761fb46d6
 
     Route::group(['middleware' => 'admin'], function () {
         Route::group(["prefix" => "dashboard"], function () {
