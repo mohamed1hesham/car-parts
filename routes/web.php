@@ -16,7 +16,9 @@ use App\Http\Controllers\AuthController;
 
 
 Route::group(["prefix" => "admin"], function () {
-    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/login', [AuthController::class, 'login_admin'])->name('login');
+    Route::post('/login', [AuthController::class, 'auth_login_admin'])->name('post_login');
+    Route::get('/logout', [AuthController::class, 'logout_admin'])->name('post_logout');
     
     Route::group(["prefix" => "dashboard"], function () {
         Route::get('/', [DashboardController::class, 'dashboard']);
