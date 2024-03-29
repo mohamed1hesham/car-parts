@@ -21,10 +21,9 @@ Route::group(["prefix" => "admin"], function () {
     Route::post('/login', [AuthController::class, 'auth_login_admin'])->name('post_login');
     Route::get('/logout', [AuthController::class, 'logout_admin'])->name('post_logout');
 
-    Route::group(['middleware' => 'admin'], function () {
-        Route::group(["prefix" => "dashboard"], function () {
-            Route::get('/', [DashboardController::class, 'dashboard']);
-            Route::get('list', [DashboardController::class, 'admin']);
-        });
-    });
+
+    Route::group(["prefix" => "dashboard"], function () {
+        Route::get('/', [DashboardController::class, 'dashboard']);
+        Route::get('list', [DashboardController::class, 'admin']);
+    })->middleware('admin');
 });

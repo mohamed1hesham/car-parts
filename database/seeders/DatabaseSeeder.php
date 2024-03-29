@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
        
 
         \App\Models\User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
+            'name' => 'adminuser',
+            'email' => 'user@gmail.com',
             'password' => Hash::make('123456'),
-            'is_admin' => true, 
+            'is_admin' => false, 
         ]);
     }
 }
