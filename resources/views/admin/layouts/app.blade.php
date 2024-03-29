@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard 3</title>
+    <title>{{ !empty($header_title) ? $header_title : '' }} - CarParts</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"

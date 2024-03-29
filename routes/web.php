@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(["prefix" => "admin"], function () {
-    Route::get('/login', function () {
+    Route::get('login', function () {
         return view('admin.auth.login');
     })->name('login');
 
     Route::group(["prefix" => "dashboard"], function () {
-        Route::get('/', function () {
-            return view('admin.pages.dashboard');
-        });
-        Route::get('list', function () {
-            return view('admin.admin.list');
-        });
+        Route::get('/', [DashboardController::class, 'dashboard']);
+
+        Route::get('list', [DashboardController::class, 'admin']);
     });
 });
