@@ -12,9 +12,9 @@ class DashboardController extends Controller
         $header_title = "Dashboard";
         return view('admin.pages.dashboard', ['header_title' => $header_title]);
     }
-    public function admin()
-    {
-        $header_title = 'Admin';
-        return view('admin.admin.list', ['header_title' => $header_title]);
-    }
+    // public function admin()
+    // {
+    //     $header_title = 'Admin';
+    //     return view('admin.admin.list', ['header_title' => $header_title]);
+    // }
 }
