@@ -18,27 +18,30 @@
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <form action="" method="post">
-                            {{csrf_field()}}
+                            {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" name="name" value="{{old('name')}}" required placeholder="Enter Name">
+                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}"
+                                        required placeholder="Enter Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" name="email" value="{{old('email')}}" required placeholder="Enter Email">
-                                    <div style="color:red">{{$errors->first('email')}}</div>
+                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}"
+                                        required placeholder="Enter Email">
+                                    <div style="color:red">{{ $errors->first('email') }}</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" name="password" required placeholder="Password">
+                                    <input type="password" class="form-control" name="password" required
+                                        placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <label>status</label>
                                     <select class="form-control" name="status" required>
-                                        <option {{(old('name')==0)?'selected':''}}value="0">Active</option>
-                                        
-                                        <option {{(old('name')==1)?'selected':''}} value="1">Inactive</option>
+                                        <option {{ old('name') == 1 ? 'selected' : '' }} value="1">Active</option>
+
+                                        <option {{ old('name') == 0 ? 'selected' : '' }} value="0">Inactive</option>
                                     </select>
                                 </div>
                             </div>

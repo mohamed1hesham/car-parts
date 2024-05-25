@@ -23,7 +23,7 @@ class AuthController extends Controller
     {
         $remember = !empty($request->remember) ? true : false;
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_admin' => 1,
-        'status' => 0 ], $remember)) {
+        'status' => 1, 'is_delete'=>0 ], $remember)) {
             return view('admin.pages.dashboard');
         } else {
             return Redirect::back()->withErrors(['message' => "please enter correct email or password"]);

@@ -29,11 +29,13 @@ public function admin()
         request()->validate([
             'email'=>'required|email|unique:users'
         ]);
+       //dd($request->status) ;
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->status = $request->status;
+
         $user->is_admin = 1;
         $user->save();
         return redirect('admin/dashboard/list')->with('status',"Admin Successfully Created");
@@ -49,12 +51,10 @@ public function admin()
 
     }
 
-
+    
     public function Update($id, Request $request)
     {
-        request()->validate([
-            'email'=>'required|email|unique:users'.$id
-        ]);
+    
         $user=User::getSingle($id);
         $user->name = $request->name;
         $user->email = $request->email;

@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Routing\Controllers\Middleware;
 
 /*
@@ -24,14 +26,31 @@ Route::group(["prefix" => "admin"], function () {
     
     
     Route::group(["prefix" => "dashboard"], function () {
-        Route::get('/', [DashboardController::class, 'dashboard'])->middleware(['auth', 'admin']);
-        Route::get('list', [AdminController ::class, 'admin'])->middleware(['auth', 'admin']);
-        Route::get('add', [AdminController::class, 'add'])->middleware(['auth', 'admin']);
+        Route::get('/', [DashboardController::class, 'dashboard']);
+        Route::get('list', [AdminController ::class, 'admin']);
+        Route::get('add', [AdminController::class, 'add']);
         Route::post ('add', [AdminController::class, 'insert']);
         Route::get ('edit/{id}', [AdminController::class, 'edit']);
         Route::post ('edit/{id}', [AdminController::class, 'update']);
         Route::get ('delete/{id}', [AdminController::class, 'delete']);
+    
     });
+
 });
+
+
+
+
+Route::get('admin/category/list', [CategoryController::class, 'list']);
+Route::get('admin/category/add', [CategoryController::class, 'add']);
+Route::post('admin/category/add', [CategoryController::class, 'insert']);
+Route::get('admin/category/edit/{id}', [CategoryController::class, 'edit']);
+Route::post('admin/category/edit/{id}', [CategoryController::class, 'update'])->name('edit_category');
+Route::get('admin/category/delete/{id}', [CategoryController::class, 'delete']);
+
+
+Route::get('admin/sub_category/list', [SubCategoryController::class, 'list']);
+
+
 
     // Route::get('admin/admin/list',[AdminController::class,'list']);
