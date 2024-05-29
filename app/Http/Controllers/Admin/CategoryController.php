@@ -20,17 +20,13 @@ class CategoryController extends Controller
         $data['header_title']='Add New Category';
         return view('admin.category.add',$data);
     }
-
-
-
-
     public function insert(Request $request)
     {
         // dd($request->all());
         
 
         $request->validate([
-            'name'=>'required|unique:category'
+            'name'=>'required|unique:categories'
         ]);
         
         $category = new Category();

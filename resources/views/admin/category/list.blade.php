@@ -68,10 +68,8 @@
                                             <td>{{ $value->status == 0 ? 'Aactive' : 'Inactive' }}</td>
                                             <td>{{ date('d-m-y', strtotime($value->created_at)) }}</td>
                                             {{-- @dd($value->id) --}}
-                                            <td><a href="{{ url('admin/category/edit/' . $value->id) }}"
-                                                    class="btn btn-primary">Edit</a>
-                                                <a href="{{ url('admin/category/delete/' . $value->id) }}"
-                                                    class="btn btn-danger">delete</a>
+                <td><a href="{{ url('admin/category/edit/' . $value->id) }}"class="btn btn-primary">Edit</a>
+                    <a href="{{ url('admin/category/delete/' . $value->id) }}"class="btn btn-danger">delete</a>
                                             </td>
                                         </tr>
                                     @endforeach

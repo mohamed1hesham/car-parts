@@ -10,7 +10,7 @@ class Category extends Model
 {
     use HasFactory;
     
-    protected $table= 'category';
+    protected $table= 'categories';
 
 
     Static public function getSingle($id){
@@ -24,6 +24,13 @@ class Category extends Model
         ->orderBy('category.id', 'desc')
         ->get();
     }
+    
+    public function subCategories()
+    {
+        return $this->hasMany(SubCategory::class);
+    }
+
+
 
     
 }

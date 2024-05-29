@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class SubCategory extends Model
 {
     use HasFactory;
-    protected $table ='sub_category';
+    protected $table ='sub_categories';
 
     Static public function getRecord(){
         return self::select('sub_category.*','users.name as created_by_name','category.name as category.name')
