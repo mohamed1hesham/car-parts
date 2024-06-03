@@ -68,8 +68,7 @@ Route::post('/admin/sub_category/edit/{id}', [SubCategoryController::class, 'upd
 Route::get('admin/sub_category/delete/{id}', [SubCategoryController::class, 'delete'])->name('sub_category.delete');
 
 
-
-Route::get('/admin/product/list', [ProductController::class, 'list'])->name('product.list');
+Route::get('/admin/product/list', [ProductController::class,'list'])->name('product.list');
 // Route::get('/admin/product/add', [SubCategoryController::class, 'add'])->name('product.add');
 // Route::post('/admin/product/insert', [SubCategoryController::class, 'insert'])->name('product.insert');
 // Route::get('/admin/product/edit/{id}', [SubCategoryController::class, 'edit'])->name('product.edit');
