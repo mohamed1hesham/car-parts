@@ -3,25 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\SubCategory;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
-use Auth;
 
-class SubCategoryController extends Controller
+class ProductController extends Controller
 {
     public function list(Request $request)
     {
-        $data['getRecord'] = SubCategory::with('category')->get();
-        $data['header_title'] = 'Sub Categories';
-        return view('admin.sub_category.list', $data);
+        $data['getRecord'] = Product::with('category')->get();
+        $data['header_title'] = 'product';
+        return view('admin.product.list', $data);
     }
 
     public function add()
     {
         $data['categories'] = Category::all();
-        $data['header_title'] = 'Add New Sub Categories';
-        return view('admin.sub_category.add', $data);
+        $data['header_title'] = 'Add New product';
+        return view('admin.product.add', $data);
     }
 
     public function insert(Request $request)
@@ -32,7 +31,7 @@ class SubCategoryController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        $subCategory = new SubCategory();
+        $subCategory = new Product();
         $subCategory->name = $request->name;
         $subCategory->category_id = $request->category_id;
         $subCategory->slug = trim($request->slug); 
@@ -47,15 +46,15 @@ class SubCategoryController extends Controller
 
         $subCategory->save();
 
-        return redirect('admin/sub_category/list')->with('status', "Sub Category Successfully Created");
+        return redirect('admin/product/list')->with('status', "product Successfully Created");
     }
 
     public function edit($id)
     {
-        $data['data'] = SubCategory::findOrFail($id);
+        $data['data'] = Product::findOrFail($id);
         $data['categories'] = Category::all();
         $data['header_title'] = 'Edit Sub Category';
-        return view('admin.sub_category.edit', $data);
+        return view('admin.product.edit', $data);
     }
 
     public function update($id, Request $request)
@@ -68,7 +67,7 @@ class SubCategoryController extends Controller
             'category_id' => 'required|exists:categories,id',
         ]);
 
-        $subCategory = SubCategory::findOrFail($id);
+        $subCategory = Product::findOrFail($id);
         $subCategory->name = $request->name;
         $subCategory->category_id = $request->category_id;
         $subCategory->slug = trim($request->slug); 
@@ -79,18 +78,18 @@ class SubCategoryController extends Controller
         $subCategory->created_by = auth()->user()->name;
         $subCategory->save();
 
-        return redirect('admin/sub_category/list')->with('status', "Sub Category Successfully Updated");
+        return redirect('admin/product/list')->with('status', "Product Successfully Updated");
     }
 
 
 
     public function delete($id){
-        $data=SubCategory::findOrFail($id);
+        $data=Product::findOrFail($id);
         // dd($data);
         $data->is_delete= 1;
         $data->delete();
 
-        return redirect()->back()->with('status',"category Successfully deleted");
+        return redirect()->back()->with('status',"Product Successfully deleted");
 
 
     }
@@ -103,4 +102,3 @@ class SubCategoryController extends Controller
 
     //     return redirect()->back()->with('status', "Sub Category Successfully Deleted");
     }
-
