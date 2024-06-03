@@ -10,6 +10,7 @@ use Illuminate\Routing\Controllers\Middleware;
 use App\Http\Controllers\UserController; 
 use App\Http\Controllers\ProductController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
