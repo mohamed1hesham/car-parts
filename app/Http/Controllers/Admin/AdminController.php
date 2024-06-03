@@ -10,26 +10,27 @@ use App\Models\User;
 class AdminController extends Controller
 {
 
-public function admin()
+    public function admin()
     {
-        $data=User::getAdmin();
-       // dd($data);
+        $data = User::getAdmin();
+        // dd($data);
         $header_title = 'Admin';
-        return view('admin.admin.list', ['header_title' => $header_title , 'getRecord' => $data]);
+        return view('admin.admin.list', ['header_title' => $header_title, 'getRecord' => $data]);
     }
-    
-    public function add(){
-        $data['header_title']='Add New Admin';
-        return view('admin.admin.add',$data);
+
+    public function add()
+    {
+        $data['header_title'] = 'Add New Admin';
+        return view('admin.admin.add', $data);
     }
 
 
     public function insert(Request $request)
     {
         request()->validate([
-            'email'=>'required|email|unique:users'
+            'email' => 'required|email|unique:users'
         ]);
-       //dd($request->status) ;
+        //dd($request->status) ;
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -38,47 +39,43 @@ public function admin()
 
         $user->is_admin = 1;
         $user->save();
-        return redirect('admin/dashboard/list')->with('status',"Admin Successfully Created");
-
+        return redirect('admin/dashboard/list')->with('status', "Admin Successfully Created");
     }
 
 
-    public function edit($id){
-        $data=User::getSingle($id);
-        $data['header_title']='edit Admin';
-        return view('admin.admin.edit',['getRecord'=> $data]);
+    public function edit($id)
+    {
+        $data = User::getSingle($id);
+        $data['header_title'] = 'edit Admin';
+        return view('admin.admin.edit', ['getRecord' => $data]);
         // return view('admin.admin.list', ['header_title' => $header_title , 'getRecord' => $data]);
 
     }
 
-    
+
     public function Update($id, Request $request)
     {
-    
-        $user=User::getSingle($id);
+
+        $user = User::getSingle($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        if(!empty($request->password)){
+        if (!empty($request->password)) {
             $user->password = Hash::make($request->password);
         }
         $user->status = $request->status;
         $user->is_admin = 1;
         $user->save();
-        return redirect('admin/dashboard/list')->with('status',"Admin Successfully updated");
-
+        return redirect('admin/dashboard/list')->with('status', "Admin Successfully updated");
     }
 
 
-    
-    public function delete($id){
-        $data=User::getSingle($id);
-        $data->is_delete= 1;
+
+    public function delete($id)
+    {
+        $data = User::getSingle($id);
+        $data->is_delete = 1;
         $data->save();
 
-        return redirect()->back()->with('status',"Admin Successfully deleted");
-
-
+        return redirect()->back()->with('status', "Admin Successfully deleted");
     }
-
-    
 }

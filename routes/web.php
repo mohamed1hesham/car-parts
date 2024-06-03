@@ -23,19 +23,17 @@ Route::group(["prefix" => "admin"], function () {
     Route::get('/login', [AuthController::class, 'login_admin'])->name('login');
     Route::post('/login', [AuthController::class, 'auth_login_admin'])->name('post_login');
     Route::get('/logout', [AuthController::class, 'logout_admin'])->name('post_logout');
-    
-    
+
+
     Route::group(["prefix" => "dashboard"], function () {
         Route::get('/', [DashboardController::class, 'dashboard']);
-        Route::get('list', [AdminController ::class, 'admin']);
+        Route::get('list', [AdminController::class, 'admin']);
         Route::get('add', [AdminController::class, 'add']);
-        Route::post ('add', [AdminController::class, 'insert']);
-        Route::get ('edit/{id}', [AdminController::class, 'edit']);
-        Route::post ('edit/{id}', [AdminController::class, 'update']);
-        Route::get ('delete/{id}', [AdminController::class, 'delete']);
-    
+        Route::post('add', [AdminController::class, 'insert']);
+        Route::get('edit/{id}', [AdminController::class, 'edit']);
+        Route::post('edit/{id}', [AdminController::class, 'update']);
+        Route::get('delete/{id}', [AdminController::class, 'delete']);
     });
-
 });
 
 
