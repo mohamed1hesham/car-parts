@@ -195,7 +195,7 @@
 
 
                     <li class="nav-item ">
-                        <a href="{{ url('admin/dashboard/product/list') }}"
+                        <a href="{{ url('admin/product/list') }}"
                             class="nav-link @if (Request::segment(3) == 'product') active @endif ">
                             <i class="nav-icon fas fa-list-alt"></i>
                             <p>

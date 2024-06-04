@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Facade;
 use \Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\UserController;
 
 class AuthController extends Controller
 {
@@ -19,6 +20,8 @@ class AuthController extends Controller
         return view('admin.auth.login');
     }
 
+    // Import the UserController if it's in a different namespace
+
     public function auth_login_admin(Request $request)
     {
         $remember = !empty($request->remember) ? true : false;
@@ -26,11 +29,17 @@ class AuthController extends Controller
             'email' => $request->email, 'password' => $request->password, 'is_admin' => 1,
             'status' => 1, 'is_delete' => 0
         ], $remember)) {
-            return view('admin.pages.dashboard');
+            return redirect()->route('admin.dashboard'); // Redirect admin to admin dashboard
+        } elseif (Auth::attempt([
+            'email' => $request->email, 'password' => $request->password, 'is_admin' => 0,
+            'status' => 0, 'is_delete' => 0
+        ], $remember)) {
+            return redirect()->route('user.page'); // Redirect user to user dashboard
         } else {
-            return Redirect::back()->withErrors(['message' => "please enter correct email or password"]);
+            return Redirect::back()->withErrors(['message' => "Please enter correct email or password"]);
         }
     }
+
 
 
 
