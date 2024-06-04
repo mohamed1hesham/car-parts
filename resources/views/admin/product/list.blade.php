@@ -45,7 +45,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Category Name</th>
-                                        <th>Sub Category Name</th>
+                                        <th>product Name</th>
                                         <th>Slug</th>
                                         <th>Meta Title</th>
                                         <th>Meta Description</th>
@@ -57,10 +57,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($getRecord as $value)
+                                    {{-- @foreach ($getRecord as $value) --}}
                                         <tr>
-                                            <td>{{ $value->id }}</td>
-                                            <td>{{ optional($value->category)->name }}</td>
+                                            <td></td>
+                                            {{-- <td>{{ optional($value->category)->name }}</td>
                                             <td>{{ $value->name }}</td>
                                             <td>{{ $value->slug }}</td>
                                             <td>{{ $value->meta_title }}</td>
@@ -75,9 +75,9 @@
                                                     class="btn btn-primary">Edit</a>
                                                 <a
                                                     href="{{ url('admin/sub_category/delete/' . $value->id) }}"class="btn btn-danger">delete</a>
-                                            </td>
+                                            </td> --}}
                                         </tr>
-                                    @endforeach
+                                    {{-- @endforeach --}}
                                 </tbody>
                             </table>
                         </div>

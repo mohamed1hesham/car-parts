@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Routing\Controllers\Middleware;
 use App\Http\Controllers\UserController; 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\ProductController;
 
 
 /*
