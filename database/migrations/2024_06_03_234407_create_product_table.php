@@ -21,6 +21,10 @@ return new class extends Migration
             $table->integer('featured');
             $table->integer('on_sale');
             $table->integer('top_rated');
+            $table->string('created_by')->nullable();
+            $table->integer('status')->default(1);
+
+
             
         });
     }

@@ -45,39 +45,46 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Category Name</th>
-                                        <th>product Name</th>
-                                        <th>Slug</th>
-                                        <th>Meta Title</th>
-                                        <th>Meta Description</th>
-                                        <th>Meta Keywords</th>
-                                        <th>Created By</th>
+                                        <th>image</th>
+                                        <th>Product Name</th>
+                                        <th>price</th>
+                                        <th>description</th>
+                                        <th>featured</th>
+                                        <th>on sale</th>
+                                        <th>top rated</th>
                                         <th>Status</th>
                                         <th>Created Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($getRecord as $value) --}}
+                                    @foreach ($getRecord as $value)
                                         <tr>
-                                            <td></td>
-                                            {{-- <td>{{ optional($value->category)->name }}</td>
+                                            <td>{{ $value->id }}</td>
+                                            <td>{{ optional($value->category)->name }}</td>
+
+                                            <td>
+                                                <img src="{{ asset('ProductImages/' . $value->image) }}" alt="Product Image"
+                                                    class="product-image" style="width: 100px; height: auto;">
+                                            </td>
                                             <td>{{ $value->name }}</td>
-                                            <td>{{ $value->slug }}</td>
-                                            <td>{{ $value->meta_title }}</td>
-                                            <td>{{ $value->meta_description }}</td>
-                                            <td>{{ $value->meta_keywords }}</td>
+                                            <td>{{ $value->price }}</td>
+                                            <td>{{ $value->description }}</td>
+                                            <td>{{ $value->featured }}</td>
+                                            <td>{{ $value->on_sale }}</td>
+                                            <td>{{ $value->top_rated }}</td>
                                             <td>{{ $value->created_by }}</td>
                                             <td>{{ $value->status == 0 ? 'Inactive' : 'Active' }}</td>
                                             <td>{{ date('d-m-Y', strtotime($value->created_at)) }}</td>
 
                                             <td>
-                                                <a href="{{ url('admin/sub_category/edit/' . $value->id) }}"
+                                                <a href="{{ url('admin/product/edit/' . $value->id) }}"
                                                     class="btn btn-primary">Edit</a>
                                                 <a
-                                                    href="{{ url('admin/sub_category/delete/' . $value->id) }}"class="btn btn-danger">delete</a>
-                                            </td> --}}
+                                                    href="{{ url('admin/product/delete/' . $value->id) }}"class="btn btn-danger">delete</a>
+                                            </td>
                                         </tr>
-                                    {{-- @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

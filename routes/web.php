@@ -5,11 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Routing\Controllers\Middleware;
-use App\Http\Controllers\UserController; 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\ProductController;
-
+use App\Http\Controllers\Store\StoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,24 +23,24 @@ use App\Http\Controllers\Admin\ProductController;
 |
 */
 
+Route::get('/', [StoreController::class, 'index'])->name('store');
+
 Route::group(["prefix" => "admin"], function () {
     Route::get('/login', [AuthController::class, 'login_admin'])->name('login');
     Route::post('/login', [AuthController::class, 'auth_login_admin'])->name('post_login');
     Route::get('/logout', [AuthController::class, 'logout_admin'])->name('post_logout');
     Route::get('user/dashboard', [UserController::class, 'userpage'])->name('user.page');
-    
-    
+
+
     Route::group(["prefix" => "dashboard"], function () {
         Route::get('/', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
-        Route::get('list', [AdminController ::class, 'admin']);
+        Route::get('list', [AdminController::class, 'admin']);
         Route::get('add', [AdminController::class, 'add']);
-        Route::post ('add', [AdminController::class, 'insert']);
-        Route::get ('edit/{id}', [AdminController::class, 'edit']);
-        Route::post ('edit/{id}', [AdminController::class, 'update']);
-        Route::get ('delete/{id}', [AdminController::class, 'delete']);
-    
+        Route::post('add', [AdminController::class, 'insert']);
+        Route::get('edit/{id}', [AdminController::class, 'edit']);
+        Route::post('edit/{id}', [AdminController::class, 'update']);
+        Route::get('delete/{id}', [AdminController::class, 'delete']);
     });
-
 });
 
 
@@ -68,7 +69,14 @@ Route::post('/admin/sub_category/edit/{id}', [SubCategoryController::class, 'upd
 Route::get('admin/sub_category/delete/{id}', [SubCategoryController::class, 'delete'])->name('sub_category.delete');
 
 
-Route::get('/admin/product/list', [ProductController::class,'list'])->name('product.list');
+Route::get('/admin/product/list', [ProductController::class, 'list'])->name('product.list');
+Route::get('/admin/product/add', [ProductController::class, 'add'])->name('product.add');
+Route::post('/admin/product/insert', [ProductController::class, 'insert'])->name('product.insert');
+Route::get('/admin/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+Route::post('/admin/product/edit/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::get('admin/product/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+
+
 // Route::get('/admin/product/add', [SubCategoryController::class, 'add'])->name('product.add');
 // Route::post('/admin/product/insert', [SubCategoryController::class, 'insert'])->name('product.insert');
 // Route::get('/admin/product/edit/{id}', [SubCategoryController::class, 'edit'])->name('product.edit');
