@@ -32,6 +32,10 @@ Route::delete('/cart/remove/{productId}', [UserController::class, 'removeFromCar
 Route::get('checkout', [StoreController::class, 'checkout'])->name('checkout');
 
 
+Route::get('product/{id}', [StoreController::class, 'product'])->name('product');
+
+
+
 Route::group(["prefix" => "admin"], function () {
     Route::post('/login', [AuthController::class, 'auth_login_admin'])->name('post_login');
     Route::get('/logout', [AuthController::class, 'logout_admin'])->name('post_logout');

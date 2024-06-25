@@ -13,27 +13,27 @@
     <meta name="description" content="Molla - Bootstrap eCommerce Template">
     <meta name="author" content="p-themes">
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="store/assets/images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="store/assets/images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="store/assets/images/icons/favicon-16x16.png">
-    <link rel="manifest" href="store/assets/images/icons/site.html">
-    <link rel="mask-icon" href="store/assets/images/icons/safari-pinned-tab.svg" color="#666666">
-    <link rel="shortcut icon" href="store/assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/store/assets/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/store/assets/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/store/assets/images/icons/favicon-16x16.png">
+    <link rel="manifest" href="/store/assets/images/icons/site.html">
+    <link rel="mask-icon" href="/store/assets/images/icons/safari-pinned-tab.svg" color="#666666">
+    <link rel="shortcut icon" href="/store/assets/images/icons/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="Molla">
     <meta name="application-name" content="Molla">
     <meta name="msapplication-TileColor" content="#cc9966">
-    <meta name="msapplication-config" content="store/assets/images/icons/browserconfig.xml">
+    <meta name="msapplication-config" content="/store/assets/images/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="store/assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/store/assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
     <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="store/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="store/assets/css/plugins/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="store/assets/css/plugins/magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="store/assets/css/plugins/jquery.countdown.css">
+    <link rel="stylesheet" href="/store/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/store/assets/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/store/assets/css/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="/store/assets/css/plugins/jquery.countdown.css">
     <!-- Main CSS File -->
-    <link rel="stylesheet" href="store/assets/css/style.css">
-    <link rel="stylesheet" href="store/assets/css/skins/skin-demo-2.css">
-    <link rel="stylesheet" href="store/assets/css/demos/demo-2.css">
+    <link rel="stylesheet" href="/store/assets/css/style.css">
+    <link rel="stylesheet" href="/store/assets/css/skins/skin-demo-2.css">
+    <link rel="stylesheet" href="/store/assets/css/demos/demo-2.css">
 </head>
 <style>
     /* Basic reset */
@@ -169,7 +169,7 @@
                         </button>
 
                         <a href="index.html" class="logo">
-                            <img src="storeImages/logo.jpg" alt="Molla Logo" width="105" height="25">
+                            <img src="/storeImages/logo.jpg" alt="Molla Logo" width="105" height="25">
                         </a>
                         <h3 style="margin-top: 10px">CarParts</h3>
                     </div><!-- End .header-left -->
@@ -318,7 +318,7 @@
             <div class="intro-slider-container">
                 <div class="owl-carousel owl-simple owl-light owl-nav-inside" data-toggle="owl"
                     data-owl-options='{"nav": false}'>
-                    <div class="intro-slide" style="background-image: url(storeImages/c.jpg);">
+                    <div class="intro-slide" style="background-image: url(/storeImages/c.jpg);">
                         <div class="container intro-content">
                             <h3 class="intro-subtitle">Bedroom Furniture</h3><!-- End .h3 intro-subtitle -->
                             <h1 class="intro-title">Find Comfort <br>That Suits You.</h1><!-- End .intro-title -->
@@ -327,14 +327,14 @@
                         </div><!-- End .container intro-content -->
                     </div><!-- End .intro-slide -->
 
-                    <div class="intro-slide" style="background-image: url(storeImages/c2.jpg);">
+                    <div class="intro-slide" style="background-image: url(/storeImages/c2.jpg);">
                         <div class="container intro-content">
 
 
                         </div><!-- End .container intro-content -->
                     </div><!-- End .intro-slide -->
 
-                    <div class="intro-slide" style="background-image: url(storeImages/c1.jpg);">
+                    <div class="intro-slide" style="background-image: url(/storeImages/c1.jpg);">
                         <div class="container intro-content">
 
                         </div><!-- End .container intro-content -->
@@ -372,31 +372,31 @@
                     }
                 }'>
                 <a href="#" class="brand">
-                    <img src="store/assets/images/brands/1.png" alt="Brand Name">
+                    <img src="/store/assets/images/brands/1.png" alt="Brand Name">
                 </a>
 
                 <a href="#" class="brand">
-                    <img src="store/assets/images/brands/2.png" alt="Brand Name">
+                    <img src="/store/assets/images/brands/2.png" alt="Brand Name">
                 </a>
 
                 <a href="#" class="brand">
-                    <img src="store/assets/images/brands/3.png" alt="Brand Name">
+                    <img src="/store/assets/images/brands/3.png" alt="Brand Name">
                 </a>
 
                 <a href="#" class="brand">
-                    <img src="store/assets/images/brands/4.png" alt="Brand Name">
+                    <img src="/store/assets/images/brands/4.png" alt="Brand Name">
                 </a>
 
                 <a href="#" class="brand">
-                    <img src="store/assets/images/brands/5.png" alt="Brand Name">
+                    <img src="/store/assets/images/brands/5.png" alt="Brand Name">
                 </a>
 
                 <a href="#" class="brand">
-                    <img src="store/assets/images/brands/6.png" alt="Brand Name">
+                    <img src="/store/assets/images/brands/6.png" alt="Brand Name">
                 </a>
 
                 <a href="#" class="brand">
-                    <img src="store/assets/images/brands/7.png" alt="Brand Name">
+                    <img src="/store/assets/images/brands/7.png" alt="Brand Name">
                 </a>
             </div><!-- End .owl-carousel -->
 
@@ -408,7 +408,7 @@
                         <div class="col-md-12 col-lg-5">
                             <div class="banner banner-large banner-overlay banner-overlay-light">
                                 <a href="#">
-                                    <img src="storeImages/p1.jpg" alt="Banner">
+                                    <img src="/storeImages/p1.jpg" alt="Banner">
                                 </a>
 
                                 <div class="banner-content banner-content-top">
@@ -422,7 +422,7 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="banner banner-overlay">
                                 <a href="#">
-                                    <img src="storeImages/p2.jpg" alt="Banner">
+                                    <img src="/storeImages/p2.jpg" alt="Banner">
                                 </a>
 
                                 <div class="banner-content banner-content-bottom">
@@ -438,7 +438,7 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="banner banner-overlay">
                                 <a href="#">
-                                    <img src="storeImages/p3.jpg" alt="Banner">
+                                    <img src="/storeImages/p3.jpg" alt="Banner">
                                 </a>
 
                                 <div class="banner-content banner-content-top">
@@ -451,7 +451,7 @@
 
                             <div class="banner banner-overlay banner-overlay-light">
                                 <a href="#">
-                                    <img src="storeImages/p4.jpg" alt="Banner">
+                                    <img src="/storeImages/p4.jpg" alt="Banner">
                                 </a>
 
                                 <div class="banner-content banner-content-top">
@@ -521,7 +521,7 @@
                             @foreach ($getFeaturedData as $value)
                                 <div class="product product-11 text-center">
                                     <figure class="product-media">
-                                        <a href="product.html">
+                                        <a href="{{ route('product', $value->id) }}">
                                             <img src="{{ asset('ProductImages/' . $value->image) }}"
                                                 alt="Product image" class="product-image">
                                             <img src="{{ asset('ProductImages/' . $value->image) }}"
@@ -535,10 +535,12 @@
                                     </figure><!-- End .product-media -->
 
                                     <div class="product-body">
-                                        <h3 class="product-title"><a href="product.html">{{ $value->name }}</a></h3>
+                                        <h3 class="product-title"><a
+                                                href="{{ route('product', $value->id) }}">{{ $value->name }}</a>
+                                        </h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
-                                            {{ $value->price }}$
+                                            {{ $value->price }} EGP
                                         </div><!-- End .product-price -->
                                     </div><!-- End .product-body -->
                                     <div class="product-action">
@@ -589,7 +591,7 @@
                             @foreach ($getOnSaledData as $value)
                                 <div class="product product-11 text-center">
                                     <figure class="product-media">
-                                        <a href="product.html">
+                                        <a href="{{ route('product', $value->id) }}">
                                             <img src="
             {{ asset('ProductImages/' . $value->image) }}"
                                                 alt="Product image" class="product-image">
@@ -606,7 +608,9 @@
                                     </figure><!-- End .product-media -->
 
                                     <div class="product-body">
-                                        <h3 class="product-title"><a href="product.html">{{ $value->name }}</a></h3>
+                                        <h3 class="product-title"><a
+                                                href="{{ route('product', $value->id) }}">{{ $value->name }}</a>
+                                        </h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
                                             {{ $value->price }}$
@@ -664,7 +668,7 @@
                             @foreach ($getTopRatedData as $value)
                                 <div class="product product-11 text-center">
                                     <figure class="product-media">
-                                        <a href="product.html">
+                                        <a href="{{ route('product', $value->id) }}">
                                             <img src="{{ asset('ProductImages/' . $value->image) }}"
                                                 alt="Product image" class="product-image">
                                             <img src="{{ asset('ProductImages/' . $value->image) }}"
@@ -678,7 +682,8 @@
                                     </figure><!-- End .product-media -->
 
                                     <div class="product-body">
-                                        <h3 class="product-title"><a href="product.html">{{ $value->name }}</a></a>
+                                        <h3 class="product-title"><a
+                                                href="{{ route('product', $value->id) }}"">{{ $value->name }}</a></a>
                                         </h3>
                                         <!-- End .product-title -->
                                         <div class="product-price">
@@ -784,8 +789,8 @@
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
                             <div class="widget widget-about">
-                                <img src="storeimages/logo.jpg" class="footer-logo" alt="Footer Logo" width="105"
-                                    height="25">
+                                <img src="/storeimages/logo.jpg" class="footer-logo" alt="Footer Logo"
+                                    width="105" height="25">
                                 <p>
                                     Welcome to CarParts, your ultimate destination for high-quality car parts and
                                     accessories. Whether you're a car enthusiast, a professional mechanic, or a DIY car
@@ -813,7 +818,7 @@
                                         <div class="col-sm-6 col-md-8">
                                             <span class="widget-about-title">Payment Method</span>
                                             <figure class="footer-payments">
-                                                <img src="store/assets/images/payments.png" alt="Payment methods"
+                                                <img src="/store/assets/images/payments.png" alt="Payment methods"
                                                     width="272" height="20">
                                             </figure><!-- End .footer-payments -->
                                         </div><!-- End .col-sm-6 -->
@@ -998,18 +1003,18 @@
 
 
     <!-- Plugins JS File -->
-    <script src="store/assets/js/jquery.min.js"></script>
-    <script src="store/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="store/assets/js/jquery.hoverIntent.min.js"></script>
-    <script src="store/assets/js/jquery.waypoints.min.js"></script>
-    <script src="store/assets/js/superfish.min.js"></script>
-    <script src="store/assets/js/owl.carousel.min.js"></script>
-    <script src="store/assets/js/jquery.plugin.min.js"></script>
-    <script src="store/assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="store/assets/js/jquery.countdown.min.js"></script>
+    <script src="/store/assets/js/jquery.min.js"></script>
+    <script src="/store/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/store/assets/js/jquery.hoverIntent.min.js"></script>
+    <script src="/store/assets/js/jquery.waypoints.min.js"></script>
+    <script src="/store/assets/js/superfish.min.js"></script>
+    <script src="/store/assets/js/owl.carousel.min.js"></script>
+    <script src="/store/assets/js/jquery.plugin.min.js"></script>
+    <script src="/store/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="/store/assets/js/jquery.countdown.min.js"></script>
     <!-- Main JS File -->
-    <script src="store/assets/js/main.js"></script>
-    <script src="store/assets/js/demos/demo-2.js"></script>
+    <script src="/store/assets/js/main.js"></script>
+    <script src="/store/assets/js/demos/demo-2.js"></script>
 </body>
 
 
