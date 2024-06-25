@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Molla - Bootstrap eCommerce Template</title>
+    <title>Car-Parts</title>
     <meta name="keywords" content="HTML5 Template">
     <meta name="description" content="Molla - Bootstrap eCommerce Template">
     <meta name="author" content="p-themes">
@@ -120,7 +120,15 @@
         <header class="header header-2 header-intro-clearance">
             <div class="header-top" style="padding: 10px">
                 <div class="container">
+                    @if (session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success ">{{ session('success') }}</div>
+                    @endif
                     <div class="header-right">
+
+
                         <ul class="top-menu">
                             <li>
                                 <ul class="header">
@@ -185,71 +193,74 @@
                     <div class="header-right">
 
                         <div class="dropdown cart-dropdown">
-                            <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false" data-display="static">
-                                <div class="icon">
-                                    <i class="icon-shopping-cart"></i>
-                                </div>
-                                <p>Cart</p>
-                            </a>
+                            @if (auth()->check())
+                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" data-display="static">
+                                    <div class="icon">
+                                        <i class="icon-shopping-cart"></i>
+                                    </div>
+                                    <p>Cart</p>
+                                </a>
+                            @endif
+
 
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="dropdown-cart-products">
-                                    <div class="product">
-                                        <div class="product-cart-details">
-                                            <h4 class="product-title">
-                                                <a href="product.html">Beige knitted elastic runner shoes</a>
-                                            </h4>
+                                    @php
+                                        $totalPrice = 0; // Initialize total price variable
+                                    @endphp
+                                    @foreach ($cart as $cartItem)
+                                        <div class="product">
+                                            <div class="product-cart-details">
+                                                <h4 class="product-title">
+                                                    <a href="product.html">{{ $cartItem->product->name }}</a>
+                                                </h4>
 
-                                            <span class="cart-product-info">
-                                                <span class="cart-product-qty">1</span>
-                                                x $84.00
-                                            </span>
-                                        </div><!-- End .product-cart-details -->
+                                                <span class="cart-product-info">
+                                                    <span class="cart-product-qty">Price: </span>
+                                                    {{ $cartItem->product->price }}
+                                                </span>
+                                            </div><!-- End .product-cart-details -->
 
-                                        <figure class="product-image-container">
-                                            <a href="product.html" class="product-image">
-                                                <img src="store/assets/images/products/cart/product-1.jpg"
-                                                    alt="product">
-                                            </a>
-                                        </figure>
-                                        <a href="#" class="btn-remove" title="Remove Product"><i
-                                                class="icon-close"></i></a>
-                                    </div><!-- End .product -->
+                                            <figure class="product-image-container">
+                                                <a href="product.html" class="product-image">
+                                                    <img src="
+                                                {{ asset('ProductImages/' . $cartItem->product->image) }}"
+                                                        alt="product">
+                                                </a>
+                                            </figure>
+                                            <form
+                                                action="{{ route('cart.remove', ['productId' => $cartItem->product->id]) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn-remove" title="Remove Product"><i
+                                                        class="icon-close"></i></button>
+                                            </form>
+                                        </div><!-- End .product -->
+                                        @php
+                                            $totalPrice += $cartItem->product->price; // Add product price to total
+                                        @endphp
+                                    @endforeach
 
-                                    <div class="product">
-                                        <div class="product-cart-details">
-                                            <h4 class="product-title">
-                                                <a href="product.html">Blue utility pinafore denim dress</a>
-                                            </h4>
 
-                                            <span class="cart-product-info">
-                                                <span class="cart-product-qty">1</span>
-                                                x $76.00
-                                            </span>
-                                        </div><!-- End .product-cart-details -->
 
-                                        <figure class="product-image-container">
-                                            <a href="product.html" class="product-image">
-                                                <img src="store/assets/images/products/cart/product-2.jpg"
-                                                    alt="product">
-                                            </a>
-                                        </figure>
-                                        <a href="#" class="btn-remove" title="Remove Product"><i
-                                                class="icon-close"></i></a>
-                                    </div><!-- End .product -->
                                 </div><!-- End .cart-product -->
 
                                 <div class="dropdown-cart-total">
                                     <span>Total</span>
 
-                                    <span class="cart-total-price">$160.00</span>
+                                    <span class="cart-total-price">${{ $totalPrice }}</span>
                                 </div><!-- End .dropdown-cart-total -->
-
                                 <div class="dropdown-cart-action">
-                                    <a href="cart.html" class="btn btn-primary">View Cart</a>
-                                    <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i
-                                            class="icon-long-arrow-right"></i></a>
+                                    <a href="{{ route('checkout') }}"
+                                        class="btn btn-outline-primary-2"><span>Checkout</span>
+
+                                        <i class="icon-long-arrow-right">
+
+                                        </i>
+                                    </a>
+
                                 </div><!-- End .dropdown-cart-total -->
                             </div><!-- End .dropdown-menu -->
                         </div><!-- End .cart-dropdown -->
@@ -270,17 +281,9 @@
                             <div class="dropdown-menu">
                                 <nav class="side-nav">
                                     <ul class="menu-vertical sf-arrows">
-                                        <li class="item-lead"><a href="#">Daily offers</a></li>
-                                        <li class="item-lead"><a href="#">Gift Ideas</a></li>
-                                        <li><a href="#">Beds</a></li>
-                                        <li><a href="#">Lighting</a></li>
-                                        <li><a href="#">Sofas & Sleeper sofas</a></li>
-                                        <li><a href="#">Storage</a></li>
-                                        <li><a href="#">Armchairs & Chaises</a></li>
-                                        <li><a href="#">Decoration </a></li>
-                                        <li><a href="#">Kitchen Cabinets</a></li>
-                                        <li><a href="#">Coffee & Tables</a></li>
-                                        <li><a href="#">Outdoor Furniture </a></li>
+                                        @foreach ($categories as $cat)
+                                            <li><a href="#">{{ $cat->name }}</a></li>
+                                        @endforeach
                                     </ul><!-- End .menu-vertical -->
                                 </nav><!-- End .side-nav -->
                             </div><!-- End .dropdown-menu -->
@@ -291,7 +294,7 @@
                         <nav class="main-nav">
                             <ul class="menu sf-arrows">
                                 <li>
-                                    <a href="index.html">Home</a>
+                                    <a href="{{ route('user.page') }}">Home</a>
                                 </li>
 
                                 <li>
@@ -539,11 +542,18 @@
                                         </div><!-- End .product-price -->
                                     </div><!-- End .product-body -->
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        <form action="{{ route('addToCart') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $value->id }}">
+                                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                            <button type="submit" class="btn-product btn-cart"><span>add to
+                                                    cart</span></button>
+                                        </form>
                                     </div><!-- End .product-action -->
                                 </div><!-- End .product -->
                             @endforeach
                         </div><!-- End .owl-carousel -->
+
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane p-0 fade" id="products-sale-tab" role="tabpanel"
                         aria-labelledby="products-sale-link">
@@ -604,12 +614,19 @@
 
                                     </div><!-- End .product-body -->
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        <form action="{{ route('addToCart') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $value->id }}">
+                                            @if (auth()->user())
+                                                <input type="hidden" name="user_id"
+                                                    value="{{ auth()->user()->id }}">
+                                            @endif
+                                            <button type="submit" class="btn-product btn-cart"><span>add to
+                                                    cart</span></button>
+                                        </form>
                                     </div><!-- End .product-action -->
                                 </div><!-- End .product -->
                             @endforeach
-
-
 
                         </div><!-- End .owl-carousel -->
                     </div><!-- .End .tab-pane -->
@@ -670,8 +687,20 @@
 
 
                                     </div><!-- End .product-body -->
+
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        <form action="{{ route('addToCart') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $value->id }}">
+
+
+
+                                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+
+
+                                            <button type="submit" class="btn-product btn-cart"><span>add to
+                                                    cart</span></button>
+                                        </form>
                                     </div><!-- End .product-action -->
                                 </div><!-- End .product -->
                             @endforeach
@@ -889,17 +918,18 @@
                             <div class="tab-content" id="tab-content-5">
                                 <div class="tab-pane fade show active" id="signin" role="tabpanel"
                                     aria-labelledby="signin-tab">
-                                    <form action="#">
+                                    <form action="{{ route('post_login') }}" method="post">
+                                        {{ csrf_field() }}
                                         <div class="form-group">
-                                            <label for="singin-email">Username or email address *</label>
-                                            <input type="text" class="form-control" id="singin-email"
-                                                name="singin-email" required>
+                                            <label for="signin-email">Username or Email Address *</label>
+                                            <input type="text" class="form-control" id="signin-email"
+                                                name="email" required>
                                         </div><!-- End .form-group -->
 
                                         <div class="form-group">
-                                            <label for="singin-password">Password *</label>
-                                            <input type="password" class="form-control" id="singin-password"
-                                                name="singin-password" required>
+                                            <label for="signin-password">Password *</label>
+                                            <input type="password" class="form-control" id="signin-password"
+                                                name="password" required>
                                         </div><!-- End .form-group -->
 
                                         <div class="form-footer">
@@ -907,34 +937,9 @@
                                                 <span>LOG IN</span>
                                                 <i class="icon-long-arrow-right"></i>
                                             </button>
-
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input"
-                                                    id="signin-remember">
-                                                <label class="custom-control-label" for="signin-remember">Remember
-                                                    Me</label>
-                                            </div><!-- End .custom-checkbox -->
-
-                                            <a href="#" class="forgot-link">Forgot Your Password?</a>
                                         </div><!-- End .form-footer -->
                                     </form>
-                                    <div class="form-choice">
-                                        <p class="text-center">or sign in with</p>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login btn-g">
-                                                    <i class="icon-google"></i>
-                                                    Login With Google
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                            <div class="col-sm-6">
-                                                <a href="#" class="btn btn-login btn-f">
-                                                    <i class="icon-facebook-f"></i>
-                                                    Login With Facebook
-                                                </a>
-                                            </div><!-- End .col-6 -->
-                                        </div><!-- End .row -->
-                                    </div><!-- End .form-choice -->
+
                                 </div><!-- .End .tab-pane -->
                                 <div class="tab-pane fade" id="register" role="tabpanel"
                                     aria-labelledby="register-tab">

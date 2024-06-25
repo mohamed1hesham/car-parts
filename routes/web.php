@@ -27,6 +27,10 @@ Route::get('/', [StoreController::class, 'index'])->name('store');
 Route::get('user', [UserController::class, 'userpage'])->name('user.page');
 Route::post('logout', [AuthController::class, 'logout_admin'])->name('logout');
 Route::get('/login', [AuthController::class, 'login_admin'])->name('login');
+Route::post('/add-to-cart', [StoreController::class, 'addToCart'])->name('addToCart');
+Route::delete('/cart/remove/{productId}', [UserController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('checkout', [StoreController::class, 'checkout'])->name('checkout');
+
 
 Route::group(["prefix" => "admin"], function () {
     Route::post('/login', [AuthController::class, 'auth_login_admin'])->name('post_login');
