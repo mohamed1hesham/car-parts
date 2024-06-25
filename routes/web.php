@@ -24,12 +24,13 @@ use App\Http\Controllers\Store\StoreController;
 */
 
 Route::get('/', [StoreController::class, 'index'])->name('store');
+Route::get('user', [UserController::class, 'userpage'])->name('user.page');
+Route::post('logout', [AuthController::class, 'logout_admin'])->name('logout');
+Route::get('/login', [AuthController::class, 'login_admin'])->name('login');
 
 Route::group(["prefix" => "admin"], function () {
-    Route::get('/login', [AuthController::class, 'login_admin'])->name('login');
     Route::post('/login', [AuthController::class, 'auth_login_admin'])->name('post_login');
     Route::get('/logout', [AuthController::class, 'logout_admin'])->name('post_logout');
-    Route::get('user/dashboard', [UserController::class, 'userpage'])->name('user.page');
 
 
     Route::group(["prefix" => "dashboard"], function () {

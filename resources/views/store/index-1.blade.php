@@ -35,26 +35,119 @@
     <link rel="stylesheet" href="store/assets/css/skins/skin-demo-2.css">
     <link rel="stylesheet" href="store/assets/css/demos/demo-2.css">
 </head>
+<style>
+    /* Basic reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .header-right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .top-menu {
+        list-style-type: none;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .header ul {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .header li {
+        list-style-type: none;
+    }
+
+    .header a {
+        text-decoration: none;
+        color: #333;
+        padding: 0.5rem 1rem;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .header a:hover {
+        background-color: #f8f8f8;
+        color: #000;
+    }
+
+    .header a:active,
+    .header a:focus {
+        outline: none;
+        background-color: #ddd;
+    }
+
+    .header a.logout {
+        color: #d9534f;
+    }
+
+    .header a.logout:hover {
+        background-color: #f2dede;
+    }
+
+    .header a.user-name {
+        font-weight: bold;
+    }
+
+    /* Add some padding and background color to the header-right section */
+    .header-right {
+        padding: 0.5rem 1rem;
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+        .top-menu {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .header-right {
+            justify-content: center;
+        }
+    }
+</style>
 
 <body>
     <div class="page-wrapper">
         <header class="header header-2 header-intro-clearance">
             <div class="header-top" style="padding: 10px">
                 <div class="container">
-                    <div class="header-left">
-                        <p>Special collection already available.</p><a href="#">&nbsp;Read more ...</a>
-                    </div><!-- End .header-left -->
-
                     <div class="header-right">
-
                         <ul class="top-menu">
                             <li>
                                 <ul class="header">
-                                    <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                                    @if (auth()->check())
+                                        <li>
+                                            <a href="#">
+                                                {{ auth()->user()->name }}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    @else
+                                        <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>
+                                    @endif
                                 </ul>
                             </li>
                         </ul><!-- End .top-menu -->
                     </div><!-- End .header-right -->
+
 
                 </div><!-- End .container -->
             </div><!-- End .header-top -->
@@ -68,9 +161,9 @@
                         </button>
 
                         <a href="index.html" class="logo">
-                            <img src="store/assets/images/demos/demo-2/logo.png" alt="Molla Logo" width="105"
-                                height="25">
+                            <img src="storeImages/logo.jpg" alt="Molla Logo" width="105" height="25">
                         </a>
+                        <h3 style="margin-top: 10px">CarParts</h3>
                     </div><!-- End .header-left -->
 
                     <div class="header-center">
@@ -82,7 +175,8 @@
                                     <label for="q" class="sr-only">Search</label>
                                     <input type="search" class="form-control" name="q" id="q"
                                         placeholder="Search product ..." required>
-                                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                                    <button class="btn btn-primary" type="submit"><i
+                                            class="icon-search"></i></button>
                                 </div><!-- End .header-search-wrapper -->
                             </form>
                         </div><!-- End .header-search -->
@@ -230,35 +324,16 @@
                         </div><!-- End .container intro-content -->
                     </div><!-- End .intro-slide -->
 
-                    <div class="intro-slide"
-                        style="background-image: url(store/assets/images/demos/demo-2/slider/slide-2.jpg);">
+                    <div class="intro-slide" style="background-image: url(storeImages/c2.jpg);">
                         <div class="container intro-content">
-                            <h3 class="intro-subtitle">Deals and Promotions</h3><!-- End .h3 intro-subtitle -->
-                            <h1 class="intro-title">Ypperlig <br>Coffee Table <br><span
-                                    class="text-primary"><sup>$</sup>49,99</span></h1><!-- End .intro-title -->
 
-                            <a href="category.html" class="btn btn-primary">
-                                <span>Shop Now</span>
-                                <i class="icon-long-arrow-right"></i>
-                            </a>
+
                         </div><!-- End .container intro-content -->
                     </div><!-- End .intro-slide -->
 
-                    <div class="intro-slide"
-                        style="background-image: url(store/assets/images/demos/demo-2/slider/slide-3.jpg);">
+                    <div class="intro-slide" style="background-image: url(storeImages/c1.jpg);">
                         <div class="container intro-content">
-                            <h3 class="intro-subtitle">Living Room</h3><!-- End .h3 intro-subtitle -->
-                            <h1 class="intro-title">
-                                Make Your Living Room <br>Work For You.<br>
-                                <span class="text-primary">
-                                    <sup class="text-white font-weight-light">from</sup><sup>$</sup>9,99
-                                </span>
-                            </h1><!-- End .intro-title -->
 
-                            <a href="category.html" class="btn btn-primary">
-                                <span>Shop Now</span>
-                                <i class="icon-long-arrow-right"></i>
-                            </a>
                         </div><!-- End .container intro-content -->
                     </div><!-- End .intro-slide -->
                 </div><!-- End .owl-carousel owl-simple -->
@@ -330,15 +405,13 @@
                         <div class="col-md-12 col-lg-5">
                             <div class="banner banner-large banner-overlay banner-overlay-light">
                                 <a href="#">
-                                    <img src="store/assets/images/demos/demo-2/banners/banner-1.jpg" alt="Banner">
+                                    <img src="storeImages/p1.jpg" alt="Banner">
                                 </a>
 
                                 <div class="banner-content banner-content-top">
-                                    <h4 class="banner-subtitle">Clearence</h4><!-- End .banner-subtitle -->
-                                    <h3 class="banner-title">Coffee Tables</h3><!-- End .banner-title -->
-                                    <div class="banner-text">from $19.99</div><!-- End .banner-text -->
-                                    <a href="#" class="btn btn-outline-gray banner-link">Shop Now<i
-                                            class="icon-long-arrow-right"></i></a>
+                                    <h4 class="banner-subtitle"></h4><!-- End .banner-subtitle -->
+                                    <h3 class="banner-title"> </h3><!-- End .banner-title -->
+                                    <div class="banner-text"></div><!-- End .banner-text -->
                                 </div><!-- End .banner-content -->
                             </div><!-- End .banner -->
                         </div><!-- End .col-lg-5 -->
@@ -346,16 +419,15 @@
                         <div class="col-md-6 col-lg-3">
                             <div class="banner banner-overlay">
                                 <a href="#">
-                                    <img src="store/assets/images/demos/demo-2/banners/banner-2.jpg" alt="Banner">
+                                    <img src="storeImages/p2.jpg" alt="Banner">
                                 </a>
 
                                 <div class="banner-content banner-content-bottom">
-                                    <h4 class="banner-subtitle text-grey">On Sale</h4><!-- End .banner-subtitle -->
-                                    <h3 class="banner-title text-white">Amazing <br>Armchairs</h3>
+                                    <h4 class="banner-subtitle text-grey"></h4><!-- End .banner-subtitle -->
+                                    <h3 class="banner-title text-white"> <br></h3>
                                     <!-- End .banner-title -->
-                                    <div class="banner-text text-white">from $39.99</div><!-- End .banner-text -->
-                                    <a href="#" class="btn btn-outline-white banner-link">Discover Now<i
-                                            class="icon-long-arrow-right"></i></a>
+                                    <div class="banner-text text-white"></div><!-- End .banner-text -->
+
                                 </div><!-- End .banner-content -->
                             </div><!-- End .banner -->
                         </div><!-- End .col-lg-3 -->
@@ -363,30 +435,26 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="banner banner-overlay">
                                 <a href="#">
-                                    <img src="store/assets/images/demos/demo-2/banners/banner-3.jpg" alt="Banner">
+                                    <img src="storeImages/p3.jpg" alt="Banner">
                                 </a>
 
                                 <div class="banner-content banner-content-top">
-                                    <h4 class="banner-subtitle text-grey">New Arrivals</h4>
+                                    <h4 class="banner-subtitle text-grey"></h4>
                                     <!-- End .banner-subtitle -->
-                                    <h3 class="banner-title text-white">Storage <br>Boxes & Baskets</h3>
+                                    <h3 class="banner-title text-white"> <br></h3>
                                     <!-- End .banner-title -->
-                                    <a href="#" class="btn btn-outline-white banner-link">Discover Now<i
-                                            class="icon-long-arrow-right"></i></a>
                                 </div><!-- End .banner-content -->
                             </div><!-- End .banner -->
 
                             <div class="banner banner-overlay banner-overlay-light">
                                 <a href="#">
-                                    <img src="store/assets/images/demos/demo-2/banners/banner-4.jpg" alt="Banner">
+                                    <img src="storeImages/p4.jpg" alt="Banner">
                                 </a>
 
                                 <div class="banner-content banner-content-top">
                                     <h4 class="banner-subtitle">On Sale</h4><!-- End .banner-subtitle -->
                                     <h3 class="banner-title">Lamps Offer</h3><!-- End .banner-title -->
                                     <div class="banner-text">up to 30% off</div><!-- End .banner-text -->
-                                    <a href="#" class="btn btn-outline-gray banner-link">Shop Now<i
-                                            class="icon-long-arrow-right"></i></a>
                                 </div><!-- End .banner-content -->
                             </div><!-- End .banner -->
                         </div><!-- End .col-lg-4 -->
@@ -687,11 +755,25 @@
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
                             <div class="widget widget-about">
-                                <img src="store/assets/images/demos/demo-2/logo.png" class="footer-logo"
-                                    alt="Footer Logo" width="105" height="25">
-                                <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
-                                    magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-                                    porttitor, facilisis luctus, metus. </p>
+                                <img src="storeimages/logo.jpg" class="footer-logo" alt="Footer Logo" width="105"
+                                    height="25">
+                                <p>
+                                    Welcome to CarParts, your ultimate destination for high-quality car parts and
+                                    accessories. Whether you're a car enthusiast, a professional mechanic, or a DIY car
+                                    owner, CarParts is designed to meet all your automotive needs. We offer an extensive
+                                    range of parts for various makes and models, ensuring you find exactly what you need
+                                    to keep your vehicle running smoothly and looking great.
+
+                                    At CarParts, we are committed to providing a seamless shopping experience. Our
+                                    user-friendly interface, detailed product information, and secure checkout process
+                                    make it easy for you to find and purchase the right parts quickly and efficiently.
+                                    With our expert customer support and comprehensive selection, you can trust us to be
+                                    your reliable partner in all things automotive.
+
+                                    Explore our website today and discover the perfect parts and accessories to enhance
+                                    your vehicle's performance and style. Thank you for choosing CarParts – where
+                                    quality and service drive us forward.
+                                </p>
 
                                 <div class="widget-about-info">
                                     <div class="row">
