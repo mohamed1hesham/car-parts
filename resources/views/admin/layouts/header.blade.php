@@ -127,7 +127,7 @@
                 <div class="info">
                     {{-- <a href="#" class="d-block">{{ Auth::user()->name }}</a> --}}
                 </div>
-            </div>  
+            </div>
 
             <!-- SidebarSearch Form -->
             <div class="form-inline">
@@ -182,7 +182,7 @@
 
                     </li>
 
-                    <li class="nav-item ">
+                    {{-- <li class="nav-item ">
                         <a href="{{ url('admin/sub_category/list') }}"
                             class="nav-link @if (Request::segment(3) == 'sub_category') active @endif ">
                             <i class="nav-icon fas fa-list-alt"></i>
@@ -191,7 +191,7 @@
                             </p>
                         </a>
 
-                    </li>
+                    </li> --}}
 
 
                     <li class="nav-item ">
