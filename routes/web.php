@@ -30,6 +30,7 @@ Route::get('/login', [AuthController::class, 'login_admin'])->name('login');
 Route::post('/add-to-cart', [StoreController::class, 'addToCart'])->name('addToCart');
 Route::delete('/cart/remove/{productId}', [UserController::class, 'removeFromCart'])->name('cart.remove');
 Route::get('checkout', [StoreController::class, 'checkout'])->name('checkout');
+Route::post('register', [AuthController::class, 'register'])->name('register');
 
 
 Route::get('product/{id}', [StoreController::class, 'product'])->name('product');

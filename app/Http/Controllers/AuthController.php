@@ -9,6 +9,9 @@ use \Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\UserController;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Validation\Validator;
 
 class AuthController extends Controller
 {
@@ -39,13 +42,38 @@ class AuthController extends Controller
             return Redirect::back()->withErrors(['message' => "Please enter correct email or password"]);
         }
     }
+    public function register(Request $request)
+    {
+        // Validate the request data
+        $validator = FacadesValidator::make($request->all(), [
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+            'name' => 'required',
+        ]);
 
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Create the new user
+        $user = User::create([
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'name' => $request->name
+        ]);
+
+        // Log the user in
+        Auth::login($user);
+
+        // Redirect to a desired route after registration
+        return redirect()->route('user.page');
+    }
 
 
 
     public function logout_admin()
     {
         Auth::logout();
-        return redirect()->back();
+        return redirect('/');
     }
 }
